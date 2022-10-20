@@ -3,6 +3,8 @@
   require_once("globals.php");
   require_once("db.php");
 
+  $flashMessage = [];
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -65,4 +67,11 @@
             </div>
             </nav>
         </header>
+
+        <?php if(!empty($flassMessage["msg"])) :?>
+            <div class="msg-container">
+                <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
+            </div>
+        <?php endif; ?>
+        
     

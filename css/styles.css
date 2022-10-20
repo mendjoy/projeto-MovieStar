@@ -112,3 +112,31 @@
     min-height: 65vh;
     padding: 40px;
 }
+
+/*msg*/
+
+.msg-container{
+    background-color: #000;
+    padding: 15px;
+}
+
+.msg{
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+}
+
+.msg-error{
+    color: red;
+    background-color: #F8D7DA;
+    border-color: #F5C2C7;
+}
+
+.msg-sucess{
+    color: green;
+    background-color: #d1e7dd;
+    border-color: #BADBCC;
+}

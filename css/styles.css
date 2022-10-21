@@ -129,13 +129,13 @@
     font-weight: bold;
 }
 
-.msg-error{
+.msg.error{
     color: red;
     background-color: #F8D7DA;
     border-color: #F5C2C7;
 }
 
-.msg-sucess{
+.msg.sucess{
     color: green;
     background-color: #d1e7dd;
     border-color: #BADBCC;

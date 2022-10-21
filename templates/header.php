@@ -2,8 +2,16 @@
 
   require_once("globals.php");
   require_once("db.php");
+  require_once("models/Message.php");
 
-  $flashMessage = [];
+  $message = new Message($BASE_URL);
+
+  $flashMessage = $message->getMessage();
+
+  if(!empty($flashMessage["msg"])){
+    //limpar a msg
+    $message->clearMessage();
+  }
 
 ?>
 <!DOCTYPE html>
@@ -68,7 +76,7 @@
             </nav>
         </header>
 
-        <?php if(!empty($flassMessage["msg"])) :?>
+        <?php if(!empty($flashMessage["msg"])) :?>
             <div class="msg-container">
                 <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
             </div>

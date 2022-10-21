@@ -51,6 +51,28 @@
         }
 
         public function findByEmail($email){
+            if($email != ""){
+
+                $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
+
+                $stmt->bindParam(":email", $email);
+
+                $stmt->execute();
+
+                //verificar se deu certo
+                if($stmt->rowCount() > 0){
+                    $data = $stmt->fetch();
+                    $user = $this->buildUser($user);
+
+                    return $user;
+
+                } else {
+                    return false;
+                }
+
+            }else{
+                return false;
+            }
 
         }
 

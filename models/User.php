@@ -9,6 +9,14 @@
         public $image;
         public $bio;
         public $token;
+
+        public function  generateToken(){
+            return bin2hex(random_bytes(50));
+        }
+
+        public function gerenatePassword($password){
+            return password_hash($password, PASSWORD_DEFAULT);
+        }
     }
 
     interface UserDAOInterface{

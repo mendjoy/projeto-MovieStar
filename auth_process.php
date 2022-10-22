@@ -28,6 +28,15 @@
           //verificar se as senhas são iguais 
           if($password === $confirmpassword){
 
+              //verificar se o email ja foi cadastrado
+              if($userDao->findByEmail($email) === false){
+               
+
+              } else{
+                 
+
+              }
+              
           } else {
             $message->setMessage("As senhas não são iguais!", "error", "back");
 

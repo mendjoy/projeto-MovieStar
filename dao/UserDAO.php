@@ -73,16 +73,15 @@
 
                 $stmt->execute();
 
-                //verificar se deu certo
-                if($stmt->rowCount() > 0){
-                    $data = $stmt->fetch();
-                    $user = $this->buildUser($user);
+                    //verificar se deu certo
+                    if($stmt->rowCount() > 0){
+                        $data = $stmt->fetch();
+                        $user = $this->buildUser($data);
 
-                    return $user;
-
-                } else {
-                    return false;
-                }
+                        return $user;
+                    } else {
+                        return false;
+                    }
 
             }else{
                 return false;

@@ -65,6 +65,22 @@
         }
 
         public function verifyToken($protected = false){
+            if(!empty($_SESSION["token"])){
+
+                $token = $_SESSION["token"];
+                $user = $this->findByToken($token);
+
+                if($user){
+                    return $user;
+
+                } else{
+                    //redireciona user nao autenticado
+                    $this->message->setMessage("Faça o login para acessar essa página", "error", "index.php");
+                }
+
+            } else{
+                return false;
+            }
 
         }
 
@@ -113,6 +129,27 @@
         }
 
         public function findByToken($token){
+            if($token != ""){
+
+                $stmt = $this->conn->prepare("SELECT * FROM users WHERE token = :token");
+
+                $stmt->bindParam(":token", $token);
+
+                $stmt->execute();
+
+                    //verificar se deu certo
+                    if($stmt->rowCount() > 0){
+                        $data = $stmt->fetch();
+                        $user = $this->buildUser($data);
+
+                        return $user;
+                    } else {
+                        return false;
+                    }
+
+            }else{
+                return false;
+            }
 
         }
 

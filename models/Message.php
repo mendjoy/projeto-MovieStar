@@ -28,7 +28,8 @@
           "msg" => $_SESSION["msg"],
           "type" => $_SESSION["type"]
         ];
-      } else {
+      } else { 
+        
         return false;
       }
 

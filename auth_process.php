@@ -24,68 +24,21 @@
   
       // Verificação de dados mínimos 
       if($name && $lastname && $email && $password) {
-  
-        // Verificar se as senhas batesão iguais
-        if($password === $confirmpassword) {
-  
-          // Verificar se email ja esta no banco
-          if($userDao->findByEmail($email) === false) {
-  
-            $user = new User();
-  
-            // Criação de token e senha
-            $userToken = $user->generateToken();
-            $finalPassword = $user->generatePassword($password);
-  
-            $user->name = $name;
-            $user->lastname = $lastname;
-            $user->email = $email;
-            $user->password = $finalPassword;
-            $user->token = $userToken;
-  
-            $auth = true;
-  
-            $userDao->create($user, $auth);
-  
+
+          //verificar se as senhas são iguais 
+          if($password === $confirmpassword){
+
           } else {
-            
-            // Enviar uma msg de erro, usuário já existe
-            $message->setMessage("Usuário já cadastrado, tente outro e-mail!.", "error", "back");
-  
+            $message->setMessage("As senhas não são iguais!", "error", "back");
+
           }
-  
-        } else {
-            // se as senhas são diferentes
-          $message->setMessage("As senhas não são iguais!.", "error", "back");
-  
-        }
-  
+
+
       } else {
-  
-        // Enviar uma msg de erro, de dados faltantes
-        $message->setMessage("Por favor, preencha todos os campos!.", "error", "back");
-  
+        //quando há dados faltando 
+        $message->setMessage("Por favor, preencha todos os campos!", "error", "back");
       }
-  
-    } else if($type === "login") {
-  
-      $email = filter_input(INPUT_POST, "email");
-      $password = filter_input(INPUT_POST, "password");
-  
-      // Tenta autenticar usuário
-      if($userDao->authenticateUser($email, $password)) {
-  
-        $message->setMessage("Seja bem-vindo!", "success", "editprofile.php");
-  
-      // Redireciona o usuário, quando não autenticado
-      } else {
-  
-        $message->setMessage("Usuário e/ou senha incorretos!.", "error", "back");
-  
-      }
-  
-    } else {
-  
-      $message->setMessage("Informações inválidas!", "error", "index.php");
-  
+
+      } else if ($type === "login"){
+
     }

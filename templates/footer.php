@@ -18,7 +18,7 @@
             <ul>
                 <li><a href="#">Adicionar filme</a></li>
                 <li><a href="#">Adicionar crítica</a></li>
-                <li><a href="#">Entrar / Registrar</a></li>
+                <li><a href="<?= $BASE_URL ?>auth.php">Entrar / Registrar</a></li>
             </ul>
         </div>
 

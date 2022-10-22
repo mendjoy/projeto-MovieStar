@@ -86,8 +86,14 @@
     line-height: 3;
 }
 
-#social-container li:hover{
+#social-container li:hover {
     background-color: #333;
+}
+
+#footer-links-container a:hover{
+    background-color: #333;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 #social-container a, #footer-links-container a {

@@ -40,6 +40,8 @@
         public function findByToken($token);
 
         public function changePassoword(User $user);
+
+        public function destroyToken();
     }
 
 ?>

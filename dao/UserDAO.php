@@ -73,13 +73,13 @@
                 if($user){
                     return $user;
 
-                } else{
+                } else if ($protected){
                     //redireciona user nao autenticado
                     $this->message->setMessage("Faça o login para acessar essa página", "error", "index.php");
                 }
 
-            } else{
-                return false;
+            } else if ($protected){
+                $this->message->setMessage("Faça o login para acessar essa página", "error", "index.php");
             }
 
         }

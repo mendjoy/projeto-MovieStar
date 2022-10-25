@@ -59,17 +59,17 @@
                 
                     <?php if($userData) :?>
                         <li class="nav-item">
-                            <a href="<?= $BASE_URL ?>newmovie.php" class="nav-link">
+                            <a href="<?= $BASE_URL ?>newmovie.php" class=" nav-link">
                                 <i class="far fa-plus-square"></i>Incluir Filme
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="<?= $BASE_URL ?>dashboard.php" class="nav-link">Meus Filmes</a>
+                            <a href="<?= $BASE_URL ?>dashboard.php" class=" nav-link">Meus Filmes</a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="<?= $BASE_URL ?>editprofile.php" class="nav-link bold">
+                            <a href="<?= $BASE_URL ?>editprofile.php" class=" nav-link bold">
                                 <?= $userData->name ?>
                             </a>
                         </li>

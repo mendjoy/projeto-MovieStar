@@ -75,6 +75,32 @@
     //atualizar senha do usuario 
     } else if ($type === "changepassword"){
 
+        $password = filter_input(INPUT_POST, "password");
+        $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+       
+        //resgata dados do usuario 
+        $userData = $userDao->verifyToken();
+        $id = $userData->id;
+
+        //checar se a senha é igual a confirmação de senha
+        if($password == $confirmpassword){
+
+            $user = new User();
+
+            $finalPassword = $user->generatePassword($password);
+
+            $user->password = $finalPassword;
+            $user->id = $id;
+
+            $userDao->changePassoword($user);
+
+        //se nao for igual
+        } else{
+            $message->setMessage("As senhas não são iguais!", "error", "back");
+
+        }
+        
+
     } else{
         $message->setMessage("Informações inválidas!", "error", "index.php");
     }

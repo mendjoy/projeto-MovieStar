@@ -59,6 +59,9 @@
     color: #f5c518;
 }
 
+.nav-item{
+    list-style: none;
+}
 /*footer*/
 
 #footer{

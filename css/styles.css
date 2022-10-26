@@ -270,6 +270,10 @@
     color: #bbb;
 }
 
+#add-movie-container .card-btn{
+    width: auto;
+
+}
 #bio{
     max-width: 400px;
 }
@@ -305,4 +309,71 @@
     min-width: 200px;
     background-position: center;
     background-size: cover;
+}
+
+/*dashboard*/
+
+#add-movie-container{
+    text-align: right;
+}
+
+#movies-dashboard .table{
+    color: white;
+}
+#movies-dashboard .table th{
+    border-top: none;
+}
+
+#movies-dashboard .table tr{
+    padding: 15px 0;
+}
+
+.table-movie-title{
+    color: white;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.table-movie-title:hover{
+    color: #f5c518;
+}
+
+.actions-column{
+    max-width: 75px;
+    text-align: center;
+}
+
+.actions-column form{
+    display: inline-block;
+}
+
+.edit-btn, .delete-btn{
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-weight: bold;
+    transition: .5s;
+    border: none;
+}
+
+.edit-btn{
+    background-color: #0dcaf0;
+    color: white;
+}
+
+.edit-btn:hover{
+    background-color: transparent;
+    color: #0dcaf0;
+    text-decoration: none;
+}
+
+.delete-btn{
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover{
+    background-color: transparent;
+    color: #dc3545;
+    text-decoration: none;
 }

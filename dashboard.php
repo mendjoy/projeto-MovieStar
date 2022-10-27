@@ -2,12 +2,17 @@
     require_once("templates/header.php");
     //verifica se o usuario esta logado
     require_once("dao/UserDAO.php");
+    require_once("dao/MovieDAO.php");
     require_once("models/User.php");
     
     $userDao = new UserDAO($conn, $BASE_URL);
+    $movieDao = new MovieDAO($conn, $BASE_URL);
     $user = new User();
 
     $userData = $userDao->verifyToken(true);
+
+    $usersMovies = $movieDao->getMoviesByUserId($userData->id);
+
 ?>
 
     <div id="main-container" class="container-fluid">
@@ -30,19 +35,27 @@
                 </thead>
 
                 <tbody>
+
+                    <?php foreach($usersMovies as $movie) : ?>
                     <tr>
-                        <td scope="row">1</td>
-                        <td><a href="#" class="table-movie-title">Título</a></td>
+                        <td scope="row"> <?= $movie->id?> </td>
+                        <td><a href=" <?= $BASE_URL?>movie.php?id=<?= $movie->id?>" class="table-movie-title">  <?= $movie->title?></a></td>
                         <td><i class="fas fa-star"></i>9</td>
                         <td class="actions-column">
-                            <a href="" class="edit-btn"><i class="far fa-edit"></i>Editar</a>
-                            <form action="">
+
+                            <a href=" <?= $BASE_URL?>editmovie.php?id=<?= $movie->id?>" class="edit-btn"><i class="far fa-edit"></i>Editar</a>
+
+                            <form action=" <?= $BASE_URL?>movie_process.php">
+                            
+                                <input type="hidden" name="type" value="delete">
+                                <input type="hidden" name="id" value="<?= $movie->id?>">
                                 <button type="submit" class="delete-btn">
                                     <i class="fas fa-times"></i>Deletar
                                 </button>
                             </form>
                         </td>
                     </tr>
+                    <?php endforeach;?>
                 </tbody>
             </table>
         </div>

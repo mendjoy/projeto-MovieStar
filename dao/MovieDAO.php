@@ -2,7 +2,7 @@
     require_once("models/Movie.php");
     require_once("models/Message.php");
 
-    //review
+    
 
 
 
@@ -31,11 +31,7 @@
             $movie->users_id = $data["users_id"];
       
             // Recebe as ratings do filme
-            $reviewDao = new ReviewDao($this->conn, $this->url);
-      
-            $rating = $reviewDao->getRatings($movie->id);
-      
-            $movie->rating = $rating;
+           
       
             return $movie;
       
@@ -70,6 +66,26 @@
         
 
         public function getMoviesByCategory($category){
+
+          $movies = [];
+
+          $stmt = $this->conn->prepare("SELECT * FROM movies WHERE category = :category ORDER BY id DESC");
+
+          $stmt->bindParam(":category", $category);
+        
+          $stmt->execute();
+    
+          if($stmt->rowCount() > 0) {
+    
+            $moviesArray = $stmt->fetchAll();
+    
+            foreach($moviesArray as $movie) {
+              $movies[] = $this->buildMovie($movie);
+            }
+    
+          }
+    
+          return $movies;
 
         }
 

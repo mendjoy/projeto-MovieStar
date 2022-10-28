@@ -1,6 +1,6 @@
 <?php
 
-  if(empty($movie->image)) {
+  if($movie->image == "") {
     $movie->image = "movie_cover.jpg";
   }
 

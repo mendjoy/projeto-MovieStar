@@ -276,7 +276,7 @@
     color: #bbb;
 }
 
-#add-movie-container .card-btn, #review-form .card-btn{
+#add-movie-container .card-btn, #review-form .card-btn, #edit-movie-form .card-btn{
     width: auto;
 
 }

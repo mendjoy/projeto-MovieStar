@@ -50,10 +50,10 @@
     <div id="main-container" class="container-fluid">
         <div class="col-md-8 offset-md-2">
             <div class="row profile-container">
-                <div class="col-md-12">
+                <div class="col-md-12 about-container" >
                     <h1 class="page-title"><?= $fullName?></h1>
 
-                    <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')" ></div>
+                    <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')" class="profile-image" ></div>
 
                     <h3 class="about-title">Sobre:</h3>
 
@@ -65,15 +65,18 @@
                 </div>
 
                 <div class="col-md-12 added-movies-container">
-                    <h3>Filmes que <?= $fullName ?> enviou.</h3>
+                    <h3>Filmes que <?= $fullName ?> enviou:</h3>
+                    <div class="movies-container">
+                        <?php foreach($userMovies as $movie):?>
+                            <?php require("templates/movie_card.php"); ?>
+                        <?php endforeach;?>
 
-                    <?php foreach($userMovies as $movie):?>
-                        <?php require("templates/movie_card.php"); ?>
-                    <?php endforeach;?>
+                        <?php if(count($userMovies) === 0) :?>
+                            <p class="empty-list">O usuário ainda não enviou nenhum filme.</p>
+                        <?php endif; ?>
+                    </div>
 
-                    <?php if(count($userMovies) === 0) :?>
-                        <p class="empty-list">O usuário ainda não enviou nenhum filme.</p>
-                    <?php endif; ?>
+                    
                 </div>
             </div>
         </div>

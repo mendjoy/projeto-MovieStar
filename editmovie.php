@@ -8,7 +8,7 @@
    $user = new User();
    $userDao = new UserDao($conn, $BASE_URL);
  
-   $userData = $userDao->verifyToken(true);
+    $userData = $userDao->verifyToken(true);
  
    $movieDao = new MovieDAO($conn, $BASE_URL);
  
@@ -108,7 +108,7 @@
        </div>
      </div>
    </div>
-   
+
  <?php
    require_once("templates/footer.php");
  ?>

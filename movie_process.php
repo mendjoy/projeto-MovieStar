@@ -20,6 +20,7 @@
 
     if($type === "create"){
 
+
         //receber os dados dos inputs 
         $title = filter_input(INPUT_POST, "title");
         $description = filter_input(INPUT_POST, "description");
@@ -80,6 +81,33 @@
         }
 
 
+    
+       
+    } else if($type === "delete"){
+
+      $id = filter_input(INPUT_POST, "id");
+
+      $movie = $movieDao->findById($id);
+
+        if($movie){
+
+          //verificar se o filme pertence ao usuario
+          if($movie->users_id === $userData->id){
+
+            $movieDao->destroy($movie->id);
+
+
+          } else{
+
+            $message->setMessage("Informações inválidas!", "error", "index.php");
+
+          }
+
+        } else{
+          $message->setMessage("Informações inválidas!", "error", "index.php");
+
+        }
     } else{
+        
         $message->setMessage("Informações inválidas!", "error", "index.php");
     }

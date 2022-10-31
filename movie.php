@@ -41,12 +41,13 @@
 
       if($userData->id === $movie->users_id) {
         $userOwnsMovie = true;
-      }
-
+      } 
+      
       // Resgatar as reviews do filme
       $alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
-  
-    }
+
+    } 
+   
 
     // Resgatar as reviews do filme
     $movieReviews = $reviewDao->getMoviesReview($movie->id);
@@ -97,7 +98,7 @@
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
-                <option value="0">1</option>
+                <option value="0">0</option>
               </select>
             </div>
             <div class="form-group">
